@@ -67,8 +67,8 @@ public class AttachSocket : MonoBehaviour
                     parent = this.gameObject.transform.parent;
                     alignPieces(parent, child, string1, string2,angle);
                     transformParent(parent, child);
-                    collider.enabled = false;
-                    this.enabled = false;
+                    collider.transform.gameObject.SetActive(false);
+                    this.transform.gameObject.SetActive(false);
                 }
                 else if (script1.pieceStatus == "pickedup")
                 {
@@ -76,8 +76,8 @@ public class AttachSocket : MonoBehaviour
                     parent = collider.transform.parent;
                     alignPieces(parent, child, string1, string2,angle);
                     transformParent(parent, child);
-                    collider.enabled = false;
-                    this.enabled = false;
+                    collider.transform.gameObject.SetActive(false);
+                    this.transform.gameObject.SetActive(false);
                 }
             }
         }
