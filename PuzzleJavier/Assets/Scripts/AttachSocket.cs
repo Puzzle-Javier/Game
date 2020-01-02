@@ -54,8 +54,8 @@ public class AttachSocket : MonoBehaviour
             angle1 = parent_angle1.localEulerAngles.z;
             angle2 = parent_angle2.localEulerAngles.z;
 
-            print(this.transform.parent.name + " angle " + angle2);
-            print(collider.transform.parent.name + " angle " + angle1);
+            //print(this.transform.parent.name + " angle " + angle2);
+            //print(collider.transform.parent.name + " angle " + angle1);
 
             float angle = Mathf.Round(angle1);
           
@@ -67,8 +67,7 @@ public class AttachSocket : MonoBehaviour
                     parent = this.gameObject.transform.parent;
                     alignPieces(parent, child, string1, string2,angle);
                     transformParent(parent, child);
-                    collider.transform.gameObject.SetActive(false);
-                    this.transform.gameObject.SetActive(false);
+                    deactivateGameObject(collider.transform, this.transform, script2, script1);
                 }
                 else if (script1.pieceStatus == "pickedup")
                 {
@@ -76,12 +75,21 @@ public class AttachSocket : MonoBehaviour
                     parent = collider.transform.parent;
                     alignPieces(parent, child, string1, string2,angle);
                     transformParent(parent, child);
-                    collider.transform.gameObject.SetActive(false);
-                    this.transform.gameObject.SetActive(false);
+                    deactivateGameObject(collider.transform, this.transform, script1,script2);
                 }
             }
         }
     }
+
+    void deactivateGameObject(Transform object1, Transform object2, MovePiece script1,MovePiece script2)
+    {
+        object1.gameObject.SetActive(false);
+        object2.gameObject.SetActive(false);
+        script1.pieceStatus = "idle";
+        script1.joinStatus = true;
+        script2.joinStatus = true;
+    }
+    
 
 
     void transformParent(Transform parent,Transform child)

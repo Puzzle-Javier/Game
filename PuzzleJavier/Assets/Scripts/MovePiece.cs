@@ -6,31 +6,56 @@ public class MovePiece : MonoBehaviour
 {
 
     public string pieceStatus = "idle";
-    public bool moving = false;
+    private bool moving;
+    private bool selected;
     private MovePiece script1;
-    private string status;
-    private bool selected = false;
+    private string statusChild;
+    public bool joinStatus;
+    public const string LAYER_NAME = "Pieces";
+    public int sortingOrder = 0;
+    private SpriteRenderer sprite;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        sprite = GetComponent<SpriteRenderer>();
+        moving = false;
+        selected = false;
+
+        if (sprite)
+        {
+            sprite.sortingOrder = sortingOrder;
+            sprite.sortingLayerName = LAYER_NAME;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (pieceStatus == "pickedup")
+        if (pieceStatus == "pickedup" && moving)
         {
             moving = true;
             selected = true;
             Vector2 mousePosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
             Vector2 objPosition = Camera.main.ScreenToWorldPoint(mousePosition);
             transform.position = objPosition;
+            sprite.sortingOrder = 2;
+        }
+        else if (pieceStatus == "childPicked") {
+            sprite.sortingOrder = 2;
         }
         else
         {
+
             selected = false;
+            if (!joinStatus)
+            {
+                sprite.sortingOrder = sortingOrder;
+            }
+            else
+            {
+                sprite.sortingOrder = 1;
+            }
         }
 
     }
@@ -49,21 +74,22 @@ public class MovePiece : MonoBehaviour
     //Action taken when a mouse button is pressed
     void OnMouseDown()
     {
-        if (pieceStatus == "idle")
-        {
-            checkParent(this.gameObject.transform,this.gameObject.transform.parent);
-            pieceStatus = "pickedup";
-            status = "childPicked";
-            traverseChildren(this.gameObject.transform,status);
 
-        }
-        else
-        {
-            pieceStatus = "idle";
-            traverseChildren(this.gameObject.transform, pieceStatus);
-        }
+        checkParent(this.gameObject.transform,this.gameObject.transform.parent);
+        pieceStatus = "pickedup";
+        statusChild = "childPicked";
+        moving = true;
+        traverseChildren(this.gameObject.transform,statusChild);
+
     }
 
+
+    void OnMouseUp()
+    {
+        moving = false;
+        pieceStatus = "idle";
+        traverseChildren(this.gameObject.transform, pieceStatus);
+    }
 
     void OnMouseOver()
     {
