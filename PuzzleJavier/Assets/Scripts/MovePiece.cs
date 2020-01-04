@@ -12,7 +12,7 @@ public class MovePiece : MonoBehaviour
     private string statusChild;
     public bool joinStatus;
     public const string LAYER_NAME = "Pieces";
-    public int sortingOrder = 0;
+    public int sortingOrder = 1;
     private SpriteRenderer sprite;
 
     // Start is called before the first frame update
@@ -54,7 +54,7 @@ public class MovePiece : MonoBehaviour
             }
             else
             {
-                sprite.sortingOrder = 1;
+                sprite.sortingOrder = 0;
             }
         }
 
