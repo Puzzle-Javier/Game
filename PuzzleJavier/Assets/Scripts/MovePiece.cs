@@ -11,6 +11,7 @@ public class MovePiece : MonoBehaviour
     private MovePiece script1;
     private string statusChild;
     public bool joinStatus;
+    public bool justSpawn;
     public const string LAYER_NAME = "Pieces";
     public int sortingOrder = 1;
     private SpriteRenderer sprite;
@@ -21,12 +22,6 @@ public class MovePiece : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         moving = false;
         selected = false;
-
-        if (sprite)
-        {
-            sprite.sortingOrder = sortingOrder;
-            sprite.sortingLayerName = LAYER_NAME;
-        }
     }
 
     // Update is called once per frame
@@ -39,22 +34,23 @@ public class MovePiece : MonoBehaviour
             Vector2 mousePosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
             Vector2 objPosition = Camera.main.ScreenToWorldPoint(mousePosition);
             transform.position = objPosition;
-            sprite.sortingOrder = 2;
+            justSpawn = false;
+            sprite.sortingOrder = 4;
         }
         else if (pieceStatus == "childPicked") {
-            sprite.sortingOrder = 2;
+            sprite.sortingOrder = 4;
         }
-        else
+        else if(!justSpawn)
         {
 
             selected = false;
             if (!joinStatus)
             {
-                sprite.sortingOrder = sortingOrder;
+                sprite.sortingOrder = 3;
             }
             else
             {
-                sprite.sortingOrder = 0;
+                sprite.sortingOrder = 2;
             }
         }
 
