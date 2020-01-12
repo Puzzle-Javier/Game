@@ -196,7 +196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AutoGetDefaultColor: 0
   DefaultColor: {r: 1, g: 1, b: 1, a: 1}
-  SelectedColor: {r: 0, g: 1, b: 0, a: 1}
+  SelectedColor: {r: 1, g: 1, b: 1, a: 0.8627451}
   CloneMaterials: 1
 --- !u!114 &9153330934775859648
 MonoBehaviour:
@@ -226,7 +226,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5623943913945781274}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 52d72cc6210cb7144a24acb7402222a6, type: 3}
   m_Name: 

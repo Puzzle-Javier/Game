@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
+
 
 using UnityEngine;
 
@@ -14,11 +16,14 @@ public class MovePiece : MonoBehaviour
     private string statusChild;
     public bool joinStatus;
     public bool justSpawn;
+    private GameObject image;
     private GameObject camera;
     private PanZoom cameraScript; 
     public const string LAYER_NAME = "Pieces";
     public int sortingOrder = 1;
     private SpriteRenderer sprite;
+    private RectTransform imageRectTransform;
+    private RawImage m_RawImage;
 
     public float clickDelta = 0.35f;  // Max between two click to be considered a double click
 
@@ -29,11 +34,14 @@ public class MovePiece : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        image = GameObject.Find("RawImage");
         sprite = GetComponent<SpriteRenderer>();
         camera = GameObject.Find("Main Camera");
         cameraScript = camera.GetComponent<PanZoom>();
         moving = false;
         selected = false;
+        imageRectTransform = image.GetComponent<RectTransform>();
+        m_RawImage = image.GetComponent<RawImage>();
     }
 
     // Update is called once per frame
@@ -70,6 +78,21 @@ public class MovePiece : MonoBehaviour
             click = false;
         }
 
+
+        if (Input.touchCount == 2 && Input.GetTouch(1).phase == TouchPhase.Began && selected)
+        {
+            Rotate();
+        }
+
+
+        if (selected)
+        {
+            m_RawImage.texture = sprite.sprite.texture;
+            m_RawImage.color = new Color32(255, 255, 225, 255);
+            imageRectTransform.rotation = this.transform.rotation;
+        }
+
+
     }
 
     //Detect 2D collision 
@@ -93,19 +116,6 @@ public class MovePiece : MonoBehaviour
         moving = true;
         traverseChildren(this.gameObject.transform,statusChild);
 
-        if (click && Time.time <= (clickTime + clickDelta))
-        {
-            Rotate();
-            click = false;
-        }
-        else
-        {
-            click = true;
-            clickTime = Time.time;
-        }
-
-
-
     }
 
     void OnMouseUp()
@@ -113,7 +123,10 @@ public class MovePiece : MonoBehaviour
         cameraScript.pieceSelected = false;
         moving = false;
         pieceStatus = "idle";
+        selected = false;
         traverseChildren(this.gameObject.transform, pieceStatus);
+        m_RawImage.color = new Color32(255, 255, 225, 0);
+
     }
 
 
