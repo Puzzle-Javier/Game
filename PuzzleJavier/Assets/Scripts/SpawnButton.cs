@@ -38,7 +38,7 @@ public class SpawnButton : MonoBehaviour
         SpriteRenderer sprite;
         GameObject spawn;
         MovePiece moveScript;
-        while(amount < 3 && pieces.Count > 0)
+        while(amount < 5 && pieces.Count > 0)
         {
             spawn = pieces.Pop();
             angle = angles[Random.Range(0, angles.Length)];
@@ -49,7 +49,6 @@ public class SpawnButton : MonoBehaviour
             sprite.sortingLayerName = "Pieces";
             moveScript = spawn.GetComponent<MovePiece>();
             moveScript.justSpawn = true;
-            Debug.Log(amount);
             count++;
             amount++;
         }

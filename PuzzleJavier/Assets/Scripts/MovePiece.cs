@@ -24,6 +24,8 @@ public class MovePiece : MonoBehaviour
     private SpriteRenderer sprite;
     private RectTransform imageRectTransform;
     private RawImage m_RawImage;
+    private Image borderImage;
+    private GameObject borderObject;
 
     public float clickDelta = 0.35f;  // Max between two click to be considered a double click
 
@@ -35,6 +37,7 @@ public class MovePiece : MonoBehaviour
     void Start()
     {
         image = GameObject.Find("RawImage");
+        borderObject = GameObject.Find("Border"); 
         sprite = GetComponent<SpriteRenderer>();
         camera = GameObject.Find("Main Camera");
         cameraScript = camera.GetComponent<PanZoom>();
@@ -42,6 +45,7 @@ public class MovePiece : MonoBehaviour
         selected = false;
         imageRectTransform = image.GetComponent<RectTransform>();
         m_RawImage = image.GetComponent<RawImage>();
+        borderImage = borderObject.GetComponent<Image>();
     }
 
     // Update is called once per frame
@@ -79,7 +83,7 @@ public class MovePiece : MonoBehaviour
         }
 
 
-        if (Input.touchCount == 2 && Input.GetTouch(1).phase == TouchPhase.Began && selected)
+        if (Input.touchCount == Globals.instance.selectedPieces + 1 && Input.GetTouch(Globals.instance.selectedPieces).phase == TouchPhase.Began && selected)
         {
             Rotate();
         }
@@ -89,9 +93,9 @@ public class MovePiece : MonoBehaviour
         {
             m_RawImage.texture = sprite.sprite.texture;
             m_RawImage.color = new Color32(255, 255, 225, 255);
+            borderImage.color = new Color32(255, 255, 255, 255);
             imageRectTransform.rotation = this.transform.rotation;
         }
-
 
     }
 
@@ -115,6 +119,7 @@ public class MovePiece : MonoBehaviour
         statusChild = "childPicked";
         moving = true;
         traverseChildren(this.gameObject.transform,statusChild);
+        Globals.instance.selectedPieces++;
 
     }
 
@@ -126,7 +131,8 @@ public class MovePiece : MonoBehaviour
         selected = false;
         traverseChildren(this.gameObject.transform, pieceStatus);
         m_RawImage.color = new Color32(255, 255, 225, 0);
-
+        borderImage.color = new Color32(255, 255, 255, 0);
+        Globals.instance.selectedPieces--;
     }
 
 
