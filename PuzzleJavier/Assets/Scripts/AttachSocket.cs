@@ -19,6 +19,7 @@ public class AttachSocket : MonoBehaviour
     private Transform parent_angle2;
     private float angle1;
     private float angle2;
+    public float dif = 3.42f;
 
     // public float dif;
     void Start()
@@ -121,7 +122,7 @@ public class AttachSocket : MonoBehaviour
     {
         char[] string1 = name1.ToCharArray();
         char[] string2 = name2.ToCharArray();
-        float dif = 3.42f;
+        //float dif = 3.42f;
         float row_x, row_y,column_x,column_y;
         float angleRad = angle * Mathf.Deg2Rad;
 
