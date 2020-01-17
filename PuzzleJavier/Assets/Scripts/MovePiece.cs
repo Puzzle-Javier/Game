@@ -16,6 +16,7 @@ public class MovePiece : MonoBehaviour
     private string statusChild;
     public bool joinStatus;
     public bool justSpawn;
+    public float offset = 4f;
     private GameObject image;
     private GameObject camera;
     private PanZoom cameraScript; 
@@ -89,6 +90,12 @@ public class MovePiece : MonoBehaviour
         }
 
 
+        /*if (Input.GetMouseButtonDown(1) && selected)
+        {
+            Rotate();
+        }*/
+
+
         if (selected)
         {
             m_RawImage.texture = sprite.sprite.texture;
@@ -120,6 +127,7 @@ public class MovePiece : MonoBehaviour
         moving = true;
         traverseChildren(this.gameObject.transform,statusChild);
         Globals.instance.selectedPieces++;
+        transform.position = new Vector3(transform.position.x, transform.position.y + offset, transform.position.z);
 
     }
 

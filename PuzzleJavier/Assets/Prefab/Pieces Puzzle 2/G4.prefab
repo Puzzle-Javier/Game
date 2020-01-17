@@ -105,6 +105,7 @@ MonoBehaviour:
   pieceStatus: idle
   joinStatus: 0
   justSpawn: 0
+  offset: 4.15
   sortingOrder: 1
   clickDelta: 0.35
 --- !u!50 &5963300279115491761

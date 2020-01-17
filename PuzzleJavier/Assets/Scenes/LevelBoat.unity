@@ -515,6 +515,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3161299692363349677, guid: 4b8885c5b6a26274abe91cd0f34a945e,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3161299692363349677, guid: 4b8885c5b6a26274abe91cd0f34a945e,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3161299692363349677, guid: 4b8885c5b6a26274abe91cd0f34a945e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -58.075012
+      objectReference: {fileID: 0}
+    - target: {fileID: 3161299692363349677, guid: 4b8885c5b6a26274abe91cd0f34a945e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -9.699997
+      objectReference: {fileID: 0}
     - target: {fileID: 3161299692606066656, guid: 4b8885c5b6a26274abe91cd0f34a945e,
         type: 3}
       propertyPath: m_Sprite
@@ -6671,12 +6691,12 @@ PrefabInstance:
     - target: {fileID: 8703999553108417255, guid: bf67b400d866ecf47bbb46d10833858c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.54
+      value: 0.34
       objectReference: {fileID: 0}
     - target: {fileID: 8703999553108417255, guid: bf67b400d866ecf47bbb46d10833858c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.4
+      value: -0.31
       objectReference: {fileID: 0}
     - target: {fileID: 8703999553108417255, guid: bf67b400d866ecf47bbb46d10833858c,
         type: 3}
@@ -6726,12 +6746,12 @@ PrefabInstance:
     - target: {fileID: 8703999553108417255, guid: bf67b400d866ecf47bbb46d10833858c,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 6.05931
+      value: 6.807635
       objectReference: {fileID: 0}
     - target: {fileID: 8703999553108417255, guid: bf67b400d866ecf47bbb46d10833858c,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 4.95
+      value: 5.0994897
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf67b400d866ecf47bbb46d10833858c, type: 3}

@@ -574,12 +574,12 @@ PrefabInstance:
     - target: {fileID: 8703999553108417255, guid: bf67b400d866ecf47bbb46d10833858c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.2
+      value: -0.14
       objectReference: {fileID: 0}
     - target: {fileID: 8703999553108417255, guid: bf67b400d866ecf47bbb46d10833858c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.05
+      value: -0.06
       objectReference: {fileID: 0}
     - target: {fileID: 8703999553108417255, guid: bf67b400d866ecf47bbb46d10833858c,
         type: 3}
@@ -629,7 +629,7 @@ PrefabInstance:
     - target: {fileID: 8703999553108417255, guid: bf67b400d866ecf47bbb46d10833858c,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 6.3845
+      value: 6.448345
       objectReference: {fileID: 0}
     - target: {fileID: 8703999553108417255, guid: bf67b400d866ecf47bbb46d10833858c,
         type: 3}
@@ -793,7 +793,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -706, y: 90.2}
+  m_AnchoredPosition: {x: -555, y: 90.2}
   m_SizeDelta: {x: 165.1, y: 143.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1670789759
@@ -857,7 +857,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1209,7 +1209,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -522, y: 90.2}
+  m_AnchoredPosition: {x: -347, y: 90.2}
   m_SizeDelta: {x: 165.1, y: 143.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2064780392

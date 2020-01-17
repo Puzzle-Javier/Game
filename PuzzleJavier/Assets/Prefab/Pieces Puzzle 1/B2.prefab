@@ -60,6 +60,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9869fee9d28591e488b7d34869f0dee1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dif: 3.42
 --- !u!1 &7585595559146721309
 GameObject:
   m_ObjectHideFlags: 0
@@ -166,6 +167,7 @@ MonoBehaviour:
   pieceStatus: idle
   joinStatus: 0
   justSpawn: 0
+  offset: 4.25
   sortingOrder: 1
   clickDelta: 0.35
 --- !u!50 &7585595559146721306
@@ -363,6 +365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9869fee9d28591e488b7d34869f0dee1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dif: 3.42
 --- !u!1 &7585595560352098365
 GameObject:
   m_ObjectHideFlags: 0
@@ -423,6 +426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9869fee9d28591e488b7d34869f0dee1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dif: 3.42
 --- !u!1 &7585595560501787826
 GameObject:
   m_ObjectHideFlags: 0
@@ -483,3 +487,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9869fee9d28591e488b7d34869f0dee1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dif: 3.42

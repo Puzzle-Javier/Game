@@ -88,9 +88,8 @@ namespace Lean.Touch
 
 			// Shift this transform by the change in delta
 			transform.localPosition = oldPosition + remainingTranslation - newRemainingTranslation;
-
-			// Update remainingDelta with the dampened value
-			remainingTranslation = newRemainingTranslation;
+            // Update remainingDelta with the dampened value
+            remainingTranslation = newRemainingTranslation;
 		}
 
 		private void TranslateUI(Vector2 screenDelta)
@@ -134,7 +133,7 @@ namespace Lean.Touch
 
 				// Add the deltaPosition
 				screenPoint += (Vector3)screenDelta;
-
+                
 				// Convert back to world space
 				transform.position = camera.ScreenToWorldPoint(screenPoint);
 			}
