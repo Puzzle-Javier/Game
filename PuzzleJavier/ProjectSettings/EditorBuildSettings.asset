@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LevelBoat.unity
     guid: 9c890ba41ceea8e4b96d4d5432199c34
+  - enabled: 1
+    path: Assets/Scenes/LevelMiami.unity
+    guid: cc02ca4cbb7af854b8184a763031b22d
   m_configObjects: {}

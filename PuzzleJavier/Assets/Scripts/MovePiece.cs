@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using Lean.Touch;
 
 
 using UnityEngine;
@@ -27,6 +28,7 @@ public class MovePiece : MonoBehaviour
     private RawImage m_RawImage;
     private Image borderImage;
     private GameObject borderObject;
+    private LeanDragTranslate leanDrag;
 
     public float clickDelta = 0.35f;  // Max between two click to be considered a double click
 
@@ -47,6 +49,7 @@ public class MovePiece : MonoBehaviour
         imageRectTransform = image.GetComponent<RectTransform>();
         m_RawImage = image.GetComponent<RawImage>();
         borderImage = borderObject.GetComponent<Image>();
+        leanDrag = GetComponent<LeanDragTranslate>();
     }
 
     // Update is called once per frame
@@ -59,10 +62,12 @@ public class MovePiece : MonoBehaviour
             selected = true;
             justSpawn = false;
             sprite.sortingOrder = 4;
+            leanDrag.enabled = true;
         }
         else if (pieceStatus == "childPicked") {
             sprite.sortingOrder = 4;
             cameraScript.pieceSelected = true;
+            leanDrag.enabled = false;
         }
         else if(!justSpawn)
         {
@@ -76,6 +81,10 @@ public class MovePiece : MonoBehaviour
             {
                 sprite.sortingOrder = 2;
             }
+        }
+        else if(pieceStatus == "idle")
+        {
+            leanDrag.enabled = true;
         }
 
         if (click && Time.time > (clickTime + clickDelta))
