@@ -33,6 +33,9 @@ public class AttachSocket : MonoBehaviour
         
     }
 
+
+    // Detect to collision with another collider to either attach or not
+
     void OnTriggerEnter2D(Collider2D collider)
     {
         string string1 = null;
@@ -84,16 +87,22 @@ public class AttachSocket : MonoBehaviour
         }
     }
 
+
+    //Deactivate Piece's sockets and stop movement 
+
     void deactivateGameObject(Transform object1, Transform object2, MovePiece script1,MovePiece script2)
     {
         object1.gameObject.SetActive(false);
         object2.gameObject.SetActive(false);
         script1.pieceStatus = "idle";
+        script1.leanSelect.enabled = false;
+        script1.leanDrag.enabled = false;
         script1.joinStatus = true;
         script2.joinStatus = true;
     }
     
 
+    //Align the game object to a new parent which is the one it attached to
 
     void transformParent(Transform parent,Transform child)
     {
@@ -117,6 +126,9 @@ public class AttachSocket : MonoBehaviour
         searchParent(root.transform.parent);
         return root.transform.parent;
     }
+
+
+    // Align the Pieces' orientation and distance to create a Joined effect
 
     void alignPieces(Transform parent, Transform child, string name1, string name2, float angle)
     {

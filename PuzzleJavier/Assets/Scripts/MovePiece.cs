@@ -28,7 +28,8 @@ public class MovePiece : MonoBehaviour
     private RawImage m_RawImage;
     private Image borderImage;
     private GameObject borderObject;
-    private LeanDragTranslate leanDrag;
+    public LeanDragTranslate leanDrag;
+    public LeanSelectable leanSelect;
 
     public float clickDelta = 0.35f;  // Max between two click to be considered a double click
 
@@ -50,6 +51,7 @@ public class MovePiece : MonoBehaviour
         m_RawImage = image.GetComponent<RawImage>();
         borderImage = borderObject.GetComponent<Image>();
         leanDrag = GetComponent<LeanDragTranslate>();
+        leanSelect = GetComponent<LeanSelectable>();
     }
 
     // Update is called once per frame
@@ -71,7 +73,6 @@ public class MovePiece : MonoBehaviour
         }
         else if(!justSpawn)
         {
-
             selected = false;
             if (!joinStatus)
             {
@@ -82,10 +83,8 @@ public class MovePiece : MonoBehaviour
                 sprite.sortingOrder = 2;
             }
         }
-        else if(pieceStatus == "idle")
-        {
-            leanDrag.enabled = true;
-        }
+
+
 
         if (click && Time.time > (clickTime + clickDelta))
         {
@@ -98,13 +97,12 @@ public class MovePiece : MonoBehaviour
             Rotate();
         }
 
-
-        /*if (Input.GetMouseButtonDown(1) && selected)
+#if UNITY_EDITOR    
+        if (Input.GetMouseButtonDown(1) && selected)
         {
             Rotate();
-        }*/
-
-
+        }
+#endif
         if (selected)
         {
             m_RawImage.texture = sprite.sprite.texture;
@@ -129,6 +127,8 @@ public class MovePiece : MonoBehaviour
     //Action taken when a mouse button is pressed
     void OnMouseDown()
     {
+        leanDrag.enabled = true;
+        leanSelect.enabled = true;
         cameraScript.pieceSelected = true;
         checkParent(this.gameObject.transform,this.gameObject.transform.parent);
         pieceStatus = "pickedup";
@@ -136,7 +136,9 @@ public class MovePiece : MonoBehaviour
         moving = true;
         traverseChildren(this.gameObject.transform,statusChild);
         Globals.instance.selectedPieces++;
+#if UNITY_ANDROID && !UNITY_EDITOR
         transform.position = new Vector3(transform.position.x, transform.position.y + offset, transform.position.z);
+#endif
 
     }
 
@@ -146,19 +148,12 @@ public class MovePiece : MonoBehaviour
         moving = false;
         pieceStatus = "idle";
         selected = false;
+        leanDrag.enabled = false;
+        leanSelect.enabled = false;
         traverseChildren(this.gameObject.transform, pieceStatus);
         m_RawImage.color = new Color32(255, 255, 225, 0);
         borderImage.color = new Color32(255, 255, 255, 0);
         Globals.instance.selectedPieces--;
-    }
-
-
-    void OnMouseOver()
-    {
-        if (Input.GetMouseButtonDown(1) && selected)
-        {
-            Rotate();
-        }
     }
 
 
